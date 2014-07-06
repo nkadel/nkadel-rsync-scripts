@@ -132,7 +132,7 @@ EXCLUDES="$EXCLUDES --exclude=kde-i18n-[a-zA-Z]*"
 #EXCLUDES="$EXCLUDES --exclude=*xen*"
 #EXCLUDES="$EXCLUDES --exclude=*PAE*"
 
-cd /var/www/mirrors/scientific || \
+cd /var/www/linux/scientific || \
     exit 1
 
 rsync $RSYNCARGS \

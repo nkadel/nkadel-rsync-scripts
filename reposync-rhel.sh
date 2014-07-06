@@ -7,7 +7,7 @@ progname=`basename $0`
 
 RSYNCARGS="$@"
 
-REPODIR=/var/www/mirrors/reposync/rhel/6Server/
+REPODIR=/var/www/linux/reposync/rhel/6Server/
 
 
 exit 0

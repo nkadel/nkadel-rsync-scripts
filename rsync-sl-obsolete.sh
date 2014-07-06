@@ -113,7 +113,7 @@ EXCLUDES="$EXCLUDES --exclude=kde-i18n-[a-zA-Z]*"
 #EXCLUDES="$EXCLUDES --exclude=*xen*"
 #EXCLUDES="$EXCLUDES --exclude=*PAE*"
 
-cd /var/www/mirrors/sl-obsolete || \
+cd /var/www/linux/sl-obsolete || \
     exit 1
 
 rsync $RSYNCARGS \

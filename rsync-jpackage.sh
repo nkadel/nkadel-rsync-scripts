@@ -101,7 +101,7 @@ EXCLUDES="$EXCLUDES --exclude=scalate-*"
 # Generate these otherwise
 #EXCLUDES="$EXCLUDES --exclude=repodata"
 
-cd /var/www/mirrors/jpackage || exit 1
+cd /var/www/linux/jpackage || exit 1
 
 #rsync $RSYNCARGS \
 #    $EXCLUDES \

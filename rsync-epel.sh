@@ -83,7 +83,7 @@ EXCLUDES="$EXCLUDES --exclude=vtk*"
 EXCLUDES="$EXCLUDES --exclude=R-core*"
 EXCLUDES="$EXCLUDES --exclude=octave-*"
 
-cd /var/www/mirrors/epel || exit 1
+cd /var/www/linux/epel || exit 1
 
 #rsync $RSYNCARGS \
 #    $EXCLUDES \

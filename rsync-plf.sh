@@ -69,7 +69,7 @@ EXCLUDES="$EXCLUDES --exclude mandriva/cfg"
 EXCLUDES="$EXCLUDES --exclude mandriva/free"
 EXCLUDES="$EXCLUDES --exclude mandriva/non-free"
 
-cd /var/www/mirrors/plf || exit 1
+cd /var/www/linux/plf || exit 1
 
 rsync $RSYNCARGS \
     $EXCLUDES \

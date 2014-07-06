@@ -106,7 +106,7 @@ EXCLUDES="$EXCLUDES --exclude=6Workstation/"
 
 # Don't really need these for fedora for now
 
-cd /var/www/mirrors/redhat/enterprise/ || exit 1
+cd /var/www/linux/redhat/enterprise/ || exit 1
 
 #rsync $RSYNCARGS \
 #    $EXCLUDES \

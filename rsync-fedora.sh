@@ -157,7 +157,7 @@ EXCLUDES="$EXCLUDES --exclude=releases/test/20-Beta"
 EXCLUDES="$EXCLUDES --exclude=testing"
 EXCLUDES="$EXCLUDES --exclude=root-doc*"
 
-cd /var/www/mirrors/fedora || exit 1
+cd /var/www/linux/fedora || exit 1
 
 #if [ ! -e releases/18 ]; then
 #    mkdir releases/18

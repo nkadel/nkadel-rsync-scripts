@@ -1,16 +1,16 @@
 #!/bin/sh
 #
-# reposync-rhel.sh - reposync RHEL srpms
-# $Id: reposync-rhel.sh,v 1.6 2013/08/03 17:50:13 root Exp root $
+# reposync-rhel.sh - reposync RHEL rpms or SRPM's, requires yum setup
+#
+# License: GPL
+# Author: Nico Kadel-Garcia <nkadel@gmail.com>
+
 
 progname=`basename $0`
 
 RSYNCARGS="$@"
 
 REPODIR=/var/www/linux/reposync/rhel/6Server/
-
-
-exit 0
 
 # Verify GPG keys for RHEL
 rpm -q gpg-pubkey-fd431d51-4ae0493b >/dev/null || exit 1

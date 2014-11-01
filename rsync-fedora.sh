@@ -36,6 +36,8 @@ RSYNCARGS="$RSYNCARGS --no-group"
 EXCLUDES="$EXCLUDES --exclude=SRPMS"
 EXCLUDES="$EXCLUDES --exclude=source"
 
+EXCLUDES="$EXCLUDES --exclude=fullfilelist"
+
 EXCLUDES="$EXCLUDES --exclude=ppc"
 EXCLUDES="$EXCLUDES --exclude=ppc64"
 EXCLUDES="$EXCLUDES --exclude=i386"

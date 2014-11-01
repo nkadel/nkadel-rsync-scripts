@@ -37,6 +37,8 @@ EXCLUDES="$EXCLUDES --exclude=csgfs"
 EXCLUDES="$EXCLUDES --exclude=apt"
 EXCLUDES="$EXCLUDES --exclude=docs"
 
+EXCLUDES="$EXCLUDES --exclude=fullfilelist"
+
 EXCLUDES="$EXCLUDES --exclude=isos"
 
 EXCLUDES="$EXCLUDES --exclude=ppc"

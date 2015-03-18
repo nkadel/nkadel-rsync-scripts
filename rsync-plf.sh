@@ -5,6 +5,9 @@
 
 PROGNAME="$0"
 
+echo "PROGNAME: disabled" >&2
+exit 1
+
 RSYNCARGS="$@"
 
 RSYNCARGS="$RSYNCARGS -aH"
@@ -38,6 +41,7 @@ EXCLUDES="$EXCLUDES --exclude debug"
 EXCLUDES="$EXCLUDES --exclude media_info"
 EXCLUDES="$EXCLUDES --exclude repoview"
 
+EXCLUDES="$EXCLUDES --exclude=fullfilelist"
 
 EXCLUDES="$EXCLUDES --exclude i586"
 EXCLUDES="$EXCLUDES --exclude amd64"

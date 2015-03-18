@@ -31,6 +31,8 @@ RSYNCARGS="$RSYNCARGS --timeout=60"
 RSYNCARGS="$RSYNCARGS --no-owner"
 RSYNCARGS="$RSYNCARGS --no-group"
 
+EXCLUDES="$EXCLUDES --exclude=fullfilelist"
+
 EXCLUDES="$EXCLUDES --exclude=SRPMS"
 EXCLUDES="$EXCLUDES --exclude=source"
 EXCLUDES="$EXCLUDES --exclude=ppc"

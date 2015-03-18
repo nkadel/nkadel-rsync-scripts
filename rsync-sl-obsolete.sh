@@ -42,6 +42,8 @@ RSYNCARGS="$RSYNCARGS --no-group"
 EXCLUDES="$EXCLUDES --exclude=repoview"
 #EXCLUDES="$EXCLUDES --exclude=source"
 
+EXCLUDES="$EXCLUDES --exclude=fullfilelist"
+
 EXCLUDES="$EXCLUDES --exclude=SRPMS"
 EXCLUDES="$EXCLUDES --exclude=debuginfo"
 EXCLUDES="$EXCLUDES --exclude=testing"

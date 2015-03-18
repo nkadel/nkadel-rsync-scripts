@@ -5,6 +5,9 @@
 
 PROGNAME="$0"
 
+echo "$PROGNAME: disabled" >&2
+exit 1
+
 RSYNCARGS="$@"
 
 RSYNCARGS="$RSYNCARGS -aH"
@@ -29,6 +32,8 @@ RSYNCARGS="$RSYNCARGS --delete-excluded"
 RSYNCARGS="$RSYNCARGS --timeout=60"
 RSYNCARGS="$RSYNCARGS --no-owner"
 RSYNCARGS="$RSYNCARGS --no-group"
+
+EXCLUDES="$EXCLUDES --exclude=fullfilelist"
 
 EXCLUDES="$EXCLUDES --exclude=1.0"
 EXCLUDES="$EXCLUDES --exclude=1.5"

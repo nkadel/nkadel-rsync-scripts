@@ -27,20 +27,22 @@ case "$RSYNCARGS" in
 esac
 RSYNCARGS="$RSYNCARGS --delete-excluded"
 
-#RSYNCARGS="$RSYNCARGS --bwlimit=20"
+RSYNCARGS="$RSYNCARGS --bwlimit=20"
 #RSYNCARGS="$RSYNCARGS --dry-run"
 RSYNCARGS="$RSYNCARGS --timeout=60"
 RSYNCARGS="$RSYNCARGS --no-owner"
 RSYNCARGS="$RSYNCARGS --no-group"
 
-EXCLUDES="$EXCLUDES --exclude=SRPMS"
-EXCLUDES="$EXCLUDES --exclude=source"
+#EXCLUDES="$EXCLUDES --exclude=SRPMS"
+#EXCLUDES="$EXCLUDES --exclude=source"
 
 EXCLUDES="$EXCLUDES --exclude=fullfilelist"
 
+EXCLUDES="$EXCLUDES --exclude=atomic"
+EXCLUDES="$EXCLUDES --exclude=armhfp"
+EXCLUDES="$EXCLUDES --exclude=i386"
 EXCLUDES="$EXCLUDES --exclude=ppc"
 EXCLUDES="$EXCLUDES --exclude=ppc64"
-EXCLUDES="$EXCLUDES --exclude=i386"
 #EXCLUDES="$EXCLUDES --exclude=x86_64"
 
 #EXCLUDES="$EXCLUDES --exclude=updates"
@@ -67,11 +69,13 @@ EXCLUDES="$EXCLUDES --exclude=pxeboot"
 EXCLUDES="$EXCLUDES --exclude=repoview"
 EXCLUDES="$EXCLUDES --exclude=drpms"
 EXCLUDES="$EXCLUDES --exclude=*.drpm"
+EXCLUDES="$EXCLUDES --exclude=core/*"
 
 #EXCLUDES="$EXCLUDES --exclude=iso"
 EXCLUDES="$EXCLUDES --exclude=Fedora*DVD.iso"
 #EXCLUDES="$EXCLUDES --exclude=Fedora*disc*.iso"
 EXCLUDES="$EXCLUDES --exclude=Fedora*Live*.iso"
+
 
 EXCLUDES="$EXCLUDES --exclude=7"
 EXCLUDES="$EXCLUDES --exclude=8"
@@ -88,6 +92,9 @@ EXCLUDES="$EXCLUDES --exclude=17"
 EXCLUDES="$EXCLUDES --exclude=18"
 EXCLUDES="$EXCLUDES --exclude=19"
 EXCLUDES="$EXCLUDES --exclude=20"
+EXCLUDES="$EXCLUDES --exclude=21-Alpha"
+EXCLUDES="$EXCLUDES --exclude=21-Beta"
+#EXCLUDES="$EXCLUDES --exclude=21"
 
 EXCLUDES="$EXCLUDES --exclude=development"
 EXCLUDES="$EXCLUDES --exclude=development/20"

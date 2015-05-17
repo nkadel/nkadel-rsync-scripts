@@ -148,19 +148,10 @@ cd /var/www/linux/scientific || \
 
 rsync $RSYNCARGS \
     $EXCLUDES \
-    rsync://mirror.anl.gov/scientific-linux/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirror.mcs.anl.gov/scientific-linux/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
     rsync://rsync.gtlib.gatech.edu/scientific/ ./ || \
 rsync $RSYNCARGS \
     $EXCLUDES \
     rsync://rsync.gtlib.gatech.edu/scientific/ ./
-
-#    rsync://mirror.anl.gov/scientific-linux/ ./
-#
 
 #case "$RSYNCARGS" in
 #    *--dry-run*)

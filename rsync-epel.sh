@@ -138,11 +138,11 @@ rsync $RSYNCARGS \
     $EXCLUDES \
     rsync://mirrors.kernel.org/fedora-epel/ ./
 
-case "$RSYNCARGS" in
-    *--dry-run*)
-	echo Skipping hardlink with $@
-	;;
-    *)
-	nice /usr/sbin/hardlink -v .
-	;;
-esac
+#case "$RSYNCARGS" in
+#    *--dry-run*)
+#	echo Skipping hardlink with $@
+#	;;
+#    *)
+#	nice /usr/sbin/hardlink -v .
+#	;;
+#esac

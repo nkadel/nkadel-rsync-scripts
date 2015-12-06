@@ -3,6 +3,9 @@
 # rsync-sl.sh - mirror scientific linux for mock use
 # $Id: rsync-scientific.sh,v 1.16 2013/12/31 21:33:01 root Exp root $
 
+echo "Disabled"
+exit 1
+
 # Sort things correctly
 LANG=C
 
@@ -16,7 +19,7 @@ RSYNCARGS="$RSYNCARGS -v"
 RSYNCARGS="$RSYNCARGS --no-motd"
 RSYNCARGS="$RSYNCARGS -P"
 # Wait until updaate is complete to write!
-RSYNCARGS="$RSYNCARGS --delay-updates"
+#RSYNCARGS="$RSYNCARGS --delay-updates"
 
 case "$RSYNCARGS" in
     *--delete*)
@@ -27,6 +30,7 @@ case "$RSYNCARGS" in
 	RSYNCARGS="$RSYNCARGS --delete-after"
 	;;
 esac
+
 RSYNCARGS="$RSYNCARGS --delete-excluded"
 
 RSYNCARGS="$RSYNCARGS --no-owner"
@@ -38,7 +42,7 @@ RSYNCARGS="$RSYNCARGS --no-group"
 #RSYNCARGS="$RSYNCARGS --dry-run"
 
 EXCLUDES="$EXCLUDES --exclude=repoview"
-#EXCLUDES="$EXCLUDES --exclude=SRPMS"
+EXCLUDES="$EXCLUDES --exclude=SRPMS"
 #EXCLUDES="$EXCLUDES --exclude=source"
 EXCLUDES="$EXCLUDES --exclude=obsolete"
 
@@ -71,7 +75,7 @@ EXCLUDES="$EXCLUDES --exclude=*rolling"
 #EXCLUDES="$EXCLUDES --exclude=4x"
 #EXCLUDES="$EXCLUDES --exclude=4x/SRPMS"
 
-EXCLUDES="$EXCLUDES --exclude=5*/"
+#EXCLUDES="$EXCLUDES --exclude=5*/"
 #EXCLUDES="$EXCLUDES --exclude=5"
 EXCLUDES="$EXCLUDES --exclude=5rolling"
 #EXCLUDES="$EXCLUDES --exclude=5rolling/SRPMS"
@@ -80,20 +84,21 @@ EXCLUDES="$EXCLUDES --exclude=5rolling"
 ## Much too bulky of file, churns too much. Grab only as needed
 #EXCLUDES="$EXCLUDES --exclude=5rolling/x86_64/os/images/*"
 #EXCLUDES="$EXCLUDES --exclude=5rolling/x86_64/os/isolinux/*"
-#EXCLUDES="$EXCLUDES --exclude=50"
-#EXCLUDES="$EXCLUDES --exclude=51"
-#EXCLUDES="$EXCLUDES --exclude=52"
-#EXCLUDES="$EXCLUDES --exclude=53"
-#EXCLUDES="$EXCLUDES --exclude=54"
-#EXCLUDES="$EXCLUDES --exclude=55"
-#EXCLUDES="$EXCLUDES --exclude=56"
-#EXCLUDES="$EXCLUDES --exclude=57"
-#EXCLUDES="$EXCLUDES --exclude=58"
-#EXCLUDES="$EXCLUDES --exclude=59"
-#EXCLUDES="$EXCLUDES --exclude=510"
-##EXCLUDES="$EXCLUDES --exclude=510/SRPMS"
-##EXCLUDES="$EXCLUDES --exclude=510/SRPMS/vendor"
-##EXCLUDES="$EXCLUDES --exclude=510/x86_64/contrib/SRPMS"
+EXCLUDES="$EXCLUDES --exclude=50"
+EXCLUDES="$EXCLUDES --exclude=51"
+EXCLUDES="$EXCLUDES --exclude=52"
+EXCLUDES="$EXCLUDES --exclude=53"
+EXCLUDES="$EXCLUDES --exclude=54"
+EXCLUDES="$EXCLUDES --exclude=55"
+EXCLUDES="$EXCLUDES --exclude=56"
+EXCLUDES="$EXCLUDES --exclude=57"
+EXCLUDES="$EXCLUDES --exclude=58"
+EXCLUDES="$EXCLUDES --exclude=59"
+EXCLUDES="$EXCLUDES --exclude=510"
+#EXCLUDES="$EXCLUDES --exclude=511"
+##EXCLUDES="$EXCLUDES --exclude=511/SRPMS"
+##EXCLUDES="$EXCLUDES --exclude=511/SRPMS/vendor"
+##EXCLUDES="$EXCLUDES --exclude=511/x86_64/contrib/SRPMS"
 #EXCLUDES="$EXCLUDES --exclude=5x"
 ##EXCLUDES="$EXCLUDES --exclude=5x/SRPMS"
 ##EXCLUDES="$EXCLUDES --exclude=5x/SRPMS/vendor"
@@ -143,7 +148,6 @@ EXCLUDES="$EXCLUDES --exclude=apt"
 EXCLUDES="$EXCLUDES --exclude=*-langpack-[a-d]*rpm"
 EXCLUDES="$EXCLUDES --exclude=*-langpack-e[a-mo-z]*rpm"
 EXCLUDES="$EXCLUDES --exclude=*-langpack-[f-z]*rpm"
-
 
 EXCLUDES="$EXCLUDES --exclude=kde-i18n-[a-zA-Z]*"
 #EXCLUDES="$EXCLUDES --exclude=*xen*"

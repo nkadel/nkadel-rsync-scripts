@@ -45,14 +45,14 @@ EXCLUDES="$EXCLUDES --exclude=repoview"
 #EXCLUDES="$EXCLUDES --exclude=source"
 
 EXCLUDES="$EXCLUDES --exclude=iso"
-EXCLUDES="$EXCLUDES --exclude=isos"
-#EXCLUDES="$EXCLUDES --exclude=*bin*.iso"
-#EXCLUDES="$EXCLUDES --exclude=*Install*.iso"
-#EXCLUDES="$EXCLUDES --exclude=*Live*.iso"
-#EXCLUDES="$EXCLUDES --exclude=*minimal*.iso"
-#EXCLUDES="$EXCLUDES --exclude=*DVD*.iso"
-#EXCLUDES="$EXCLUDES --exclude=*Minimal*.iso"
-#EXCLUDES="$EXCLUDES --exclude=*Everything*.iso"
+#EXCLUDES="$EXCLUDES --exclude=isos"
+EXCLUDES="$EXCLUDES --exclude=*bin*.iso"
+EXCLUDES="$EXCLUDES --exclude=*Install*.iso"
+EXCLUDES="$EXCLUDES --exclude=*Live*.iso"
+EXCLUDES="$EXCLUDES --exclude=*minimal*.iso"
+EXCLUDES="$EXCLUDES --exclude=*DVD*.iso"
+EXCLUDES="$EXCLUDES --exclude=*Minimal*.iso"
+EXCLUDES="$EXCLUDES --exclude=*Everything*.iso"
 
 EXCLUDES="$EXCLUDES --exclude=LiveOS"
 EXCLUDES="$EXCLUDES --exclude=livecd"
@@ -80,9 +80,9 @@ EXCLUDES="$EXCLUDES --exclude=*rolling"
 
 # libreoffice-langpack-en needed for desktops, not others, very bulky
 # openoffice not needed, but openoffice-langpack-en is harmless
-EXCLUDES="$EXCLUDES --exclude=*-langpack-[a-d]*rpm"
-EXCLUDES="$EXCLUDES --exclude=*-langpack-e[a-mo-z]*rpm"
-EXCLUDES="$EXCLUDES --exclude=*-langpack-[f-z]*rpm"
+#EXCLUDES="$EXCLUDES --exclude=*-langpack-[a-d]*rpm"
+#EXCLUDES="$EXCLUDES --exclude=*-langpack-e[a-mo-z]*rpm"
+#EXCLUDES="$EXCLUDES --exclude=*-langpack-[f-z]*rpm"
 
 cd /var/www/linux/centos/ || \
     exit 1

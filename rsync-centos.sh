@@ -59,8 +59,19 @@ EXCLUDES="$EXCLUDES --exclude=livecd"
 EXCLUDES="$EXCLUDES --exclude=headers"
 EXCLUDES="$EXCLUDES --exclude=HEADER.html"
 
-EXCLUDES="$EXCLUDES --exclude=5*/"
-EXCLUDES="$EXCLUDES --exclude=5"
+EXCLUDES="$EXCLUDES --exclude=cloud"
+EXCLUDES="$EXCLUDES --exclude=dotnet"
+
+#EXCLUDES="$EXCLUDES --exclude=2*/"
+#EXCLUDES="$EXCLUDES --exclude=2"
+#EXCLUDES="$EXCLUDES --exclude=3*/"
+#EXCLUDES="$EXCLUDES --exclude=3"
+#EXCLUDES="$EXCLUDES --exclude=4*/"
+#EXCLUDES="$EXCLUDES --exclude=4"
+#EXCLUDES="$EXCLUDES --exclude=5*/"
+#EXCLUDES="$EXCLUDES --exclude=5"
+EXCLUDES="$EXCLUDES --exclude=6*/"
+EXCLUDES="$EXCLUDES --exclude=6"
 
 EXCLUDES="$EXCLUDES --exclude=fullfilelist"
 
@@ -72,7 +83,7 @@ EXCLUDES="$EXCLUDES --exclude=i386"
 EXCLUDES="$EXCLUDES --exclude=atomic"
 #EXCLUDES="$EXCLUDES --exclude=x86_64"
 
-# To bulky, not needed
+# Too bulky, not needed
 EXCLUDES="$EXCLUDES --exclude=*rolling"
 
 #EXCLUDES="$EXCLUDES --exclude=6"

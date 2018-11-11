@@ -70,8 +70,9 @@ EXCLUDES="$EXCLUDES --exclude=dotnet"
 #EXCLUDES="$EXCLUDES --exclude=4"
 #EXCLUDES="$EXCLUDES --exclude=5*/"
 #EXCLUDES="$EXCLUDES --exclude=5"
-EXCLUDES="$EXCLUDES --exclude=6*/"
-EXCLUDES="$EXCLUDES --exclude=6"
+#EXCLUDES="$EXCLUDES --exclude=6/*/*"
+# RHEL and CentOS 6 are dangerously out of date
+EXCLUDES="$EXCLUDES --exclude=6.*/*/*"
 
 EXCLUDES="$EXCLUDES --exclude=fullfilelist"
 
@@ -82,12 +83,6 @@ EXCLUDES="$EXCLUDES --exclude=xen4"
 EXCLUDES="$EXCLUDES --exclude=i386"
 EXCLUDES="$EXCLUDES --exclude=atomic"
 #EXCLUDES="$EXCLUDES --exclude=x86_64"
-
-# Too bulky, not needed
-EXCLUDES="$EXCLUDES --exclude=*rolling"
-
-#EXCLUDES="$EXCLUDES --exclude=6"
-#EXCLUDES="$EXCLUDES --exclude=6/SRPMS"
 
 # libreoffice-langpack-en needed for desktops, not others, very bulky
 # openoffice not needed, but openoffice-langpack-en is harmless

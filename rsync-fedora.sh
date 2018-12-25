@@ -4,6 +4,7 @@
 # $Id: rsync-fedora.sh,v 1.20 2013/12/31 21:33:01 root Exp root $
 
 LANG=C
+export LANG
 
 PROGNAME="$0"
 
@@ -27,7 +28,7 @@ case "$RSYNCARGS" in
 esac
 RSYNCARGS="$RSYNCARGS --delete-excluded"
 
-RSYNCARGS="$RSYNCARGS --bwlimit=20"
+RSYNCARGS="$RSYNCARGS --bwlimit=1000"
 #RSYNCARGS="$RSYNCARGS --dry-run"
 RSYNCARGS="$RSYNCARGS --timeout=60"
 RSYNCARGS="$RSYNCARGS --no-owner"
@@ -38,12 +39,13 @@ RSYNCARGS="$RSYNCARGS --no-group"
 
 EXCLUDES="$EXCLUDES --exclude=fullfilelist"
 
-EXCLUDES="$EXCLUDES --exclude=atomic"
+EXCLUDES="$EXCLUDES --exclude=aarch64"
 EXCLUDES="$EXCLUDES --exclude=armhfp"
+EXCLUDES="$EXCLUDES --exclude=atomic"
 EXCLUDES="$EXCLUDES --exclude=i386"
 EXCLUDES="$EXCLUDES --exclude=ppc"
 EXCLUDES="$EXCLUDES --exclude=ppc64"
-#EXCLUDES="$EXCLUDES --exclude=x86_64"
+EXCLUDES="$EXCLUDES --exclude=x86_64"
 
 #EXCLUDES="$EXCLUDES --exclude=updates"
 #EXCLUDES="$EXCLUDES --exclude=releases"
@@ -71,34 +73,49 @@ EXCLUDES="$EXCLUDES --exclude=drpms"
 EXCLUDES="$EXCLUDES --exclude=*.drpm"
 EXCLUDES="$EXCLUDES --exclude=core/*"
 
+EXCLUDES="$EXCLUDES --exclude=Modular"
 #EXCLUDES="$EXCLUDES --exclude=iso"
 EXCLUDES="$EXCLUDES --exclude=Fedora*DVD.iso"
-#EXCLUDES="$EXCLUDES --exclude=Fedora*disc*.iso"
+EXCLUDES="$EXCLUDES --exclude=Fedora*disc*.iso"
 EXCLUDES="$EXCLUDES --exclude=Fedora*Live*.iso"
 
 
-EXCLUDES="$EXCLUDES --exclude=7"
-EXCLUDES="$EXCLUDES --exclude=8"
-EXCLUDES="$EXCLUDES --exclude=9"
-EXCLUDES="$EXCLUDES --exclude=10"
-EXCLUDES="$EXCLUDES --exclude=11"
-EXCLUDES="$EXCLUDES --exclude=12"
-EXCLUDES="$EXCLUDES --exclude=13"
-EXCLUDES="$EXCLUDES --exclude=13-Alpha"
-EXCLUDES="$EXCLUDES --exclude=14"
-EXCLUDES="$EXCLUDES --exclude=15"
-EXCLUDES="$EXCLUDES --exclude=16"
-EXCLUDES="$EXCLUDES --exclude=17"
-EXCLUDES="$EXCLUDES --exclude=18"
-EXCLUDES="$EXCLUDES --exclude=19"
-EXCLUDES="$EXCLUDES --exclude=20"
-EXCLUDES="$EXCLUDES --exclude=21-Alpha"
-EXCLUDES="$EXCLUDES --exclude=21-Beta"
-#EXCLUDES="$EXCLUDES --exclude=21"
+EXCLUDES="$EXCLUDES --exclude=*/1"
+EXCLUDES="$EXCLUDES --exclude=*/2"
+EXCLUDES="$EXCLUDES --exclude=*/3"
+EXCLUDES="$EXCLUDES --exclude=*/4"
+EXCLUDES="$EXCLUDES --exclude=*/5"
+EXCLUDES="$EXCLUDES --exclude=*/6"
+EXCLUDES="$EXCLUDES --exclude=*/7"
+EXCLUDES="$EXCLUDES --exclude=*/8"
+EXCLUDES="$EXCLUDES --exclude=*/9"
+EXCLUDES="$EXCLUDES --exclude=*/10"
+EXCLUDES="$EXCLUDES --exclude=*/11"
+EXCLUDES="$EXCLUDES --exclude=*/12"
+EXCLUDES="$EXCLUDES --exclude=*/13"
+EXCLUDES="$EXCLUDES --exclude=*/13-Alpha"
+EXCLUDES="$EXCLUDES --exclude=*/14"
+EXCLUDES="$EXCLUDES --exclude=*/15"
+EXCLUDES="$EXCLUDES --exclude=*/16"
+EXCLUDES="$EXCLUDES --exclude=*/17"
+EXCLUDES="$EXCLUDES --exclude=*/18"
+EXCLUDES="$EXCLUDES --exclude=*/19"
+EXCLUDES="$EXCLUDES --exclude=*/20"
+EXCLUDES="$EXCLUDES --exclude=*/21"
+EXCLUDES="$EXCLUDES --exclude=*/22"
+EXCLUDES="$EXCLUDES --exclude=*/23"
+EXCLUDES="$EXCLUDES --exclude=*/24"
+EXCLUDES="$EXCLUDES --exclude=*/25"
+EXCLUDES="$EXCLUDES --exclude=*/26"
+EXCLUDES="$EXCLUDES --exclude=*/27"
+EXCLUDES="$EXCLUDES --exclude=*/28"
+#EXCLUDES="$EXCLUDES --exclude=*/29"
+EXCLUDES="$EXCLUDES --exclude=*/21-Alpha"
+EXCLUDES="$EXCLUDES --exclude=*/21-Beta"
 
 EXCLUDES="$EXCLUDES --exclude=development"
-EXCLUDES="$EXCLUDES --exclude=development/20"
-EXCLUDES="$EXCLUDES --exclude=development/rawhide/"
+#EXCLUDES="$EXCLUDES --exclude=development/30"
+#EXCLUDES="$EXCLUDES --exclude=development/rawhide/"
 
 # Music formatting
 EXCLUDES="$EXCLUDES --exclude=lilypond-*.rpm"
@@ -157,21 +174,16 @@ EXCLUDES="$EXCLUDES --exclude=gimp-help-*"
 
 # Don't really need these for fedora for now
 #EXCLUDES="$EXCLUDES --exclude=test"
-EXCLUDES="$EXCLUDES --exclude=releases/test/17-Alpha"
-EXCLUDES="$EXCLUDES --exclude=releases/test/17-Beta"
-EXCLUDES="$EXCLUDES --exclude=releases/test/18-Beta"
-EXCLUDES="$EXCLUDES --exclude=releases/test/19-Alpha"
-EXCLUDES="$EXCLUDES --exclude=releases/test/20-Alpha"
-EXCLUDES="$EXCLUDES --exclude=releases/test/20-Beta"
+EXCLUDES="$EXCLUDES --exclude=releases/test/*"
 EXCLUDES="$EXCLUDES --exclude=testing"
 EXCLUDES="$EXCLUDES --exclude=root-doc*"
 
 cd /var/www/linux/fedora || exit 1
 
-#if [ ! -e releases/18 ]; then
-#    mkdir releases/18
-#    echo Mirroring development/18 to releases/18
-#    /bin/cp -a -l -n development/18/. releases/18/.
+#if [ ! -e releases/30 ]; then
+#    mkdir releases/30
+#    echo Mirroring development/30 to releases/30
+#    /bin/cp -a -l -n development/30/. releases/30/.
 #fi
 
 rsync $RSYNCARGS \

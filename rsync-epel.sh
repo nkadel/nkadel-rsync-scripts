@@ -32,10 +32,10 @@ RSYNCARGS="$RSYNCARGS --no-owner"
 RSYNCARGS="$RSYNCARGS --no-group"
 
 EXCLUDES="$EXCLUDES --exclude=SRPMS"
-EXCLUDES="$EXCLUDES --exclude=source"
 EXCLUDES="$EXCLUDES --exclude=csgfs"
 EXCLUDES="$EXCLUDES --exclude=apt"
 EXCLUDES="$EXCLUDES --exclude=docs"
+#EXCLUDES="$EXCLUDES --exclude=source"
 
 EXCLUDES="$EXCLUDES --exclude=fullfilelist"
 

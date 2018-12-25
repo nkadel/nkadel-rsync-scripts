@@ -76,6 +76,8 @@ EXCLUDES="$EXCLUDES --exclude=6.*/*/*"
 
 EXCLUDES="$EXCLUDES --exclude=fullfilelist"
 
+EXCLUDES="$EXCLUDES --exclude=fasttrack"
+
 EXCLUDES="$EXCLUDES --exclude=virt"
 EXCLUDES="$EXCLUDES --exclude=xen"
 EXCLUDES="$EXCLUDES --exclude=xen4"

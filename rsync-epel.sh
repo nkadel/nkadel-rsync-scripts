@@ -31,64 +31,7 @@ RSYNCARGS="$RSYNCARGS --timeout=120"
 RSYNCARGS="$RSYNCARGS --no-owner"
 RSYNCARGS="$RSYNCARGS --no-group"
 
-EXCLUDES="$EXCLUDES --exclude=SRPMS"
-EXCLUDES="$EXCLUDES --exclude=csgfs"
-EXCLUDES="$EXCLUDES --exclude=apt"
-EXCLUDES="$EXCLUDES --exclude=docs"
-#EXCLUDES="$EXCLUDES --exclude=source"
-
-EXCLUDES="$EXCLUDES --exclude=fullfilelist"
-
-EXCLUDES="$EXCLUDES --exclude=isos"
-
-EXCLUDES="$EXCLUDES --exclude=aarch64"
-EXCLUDES="$EXCLUDES --exclude=alpha"
-EXCLUDES="$EXCLUDES --exclude=i386"
-EXCLUDES="$EXCLUDES --exclude=ia64"
-EXCLUDES="$EXCLUDES --exclude=ppc"
-EXCLUDES="$EXCLUDES --exclude=ppc64"
-EXCLUDES="$EXCLUDES --exclude=ppc64ie"
-EXCLUDES="$EXCLUDES --exclude=ppc64le"
-EXCLUDES="$EXCLUDES --exclude=s390"
-EXCLUDES="$EXCLUDES --exclude=s390x"
-#EXCLUDES="$EXCLUDES --exclude=x86_64"
-
-EXCLUDES="$EXCLUDES --exclude=debug"
-EXCLUDES="$EXCLUDES --exclude=drpms"
-EXCLUDES="$EXCLUDES --exclude=testing"
-
-#EXCLUDES="$EXCLUDES --exclude=4/"
-#EXCLUDES="$EXCLUDES --exclude=4AS"
-#EXCLUDES="$EXCLUDES --exclude=4ES"
-#EXCLUDES="$EXCLUDES --exclude=4WS"
-
-#EXCLUDES="$EXCLUDES --exclude=5Client"
-#EXCLUDES="$EXCLUDES --exclude=5Server"
-#EXCLUDES="$EXCLUDES --exclude=5/"
-
-# RHEL and CentOS 6 are seriously out of date
-#EXCLUDES="$EXCLUDES --exclude=6Client"
-#EXCLUDES="$EXCLUDES --exclude=6Server"
-EXCLUDES="$EXCLUDES --exclude=6/*/*/*"
-
-EXCLUDES="$EXCLUDES --exclude=repoview"
-
-# Bulky and undesirable widgets
-EXCLUDES="$EXCLUDES --exclude=asterisk*"
-EXCLUDES="$EXCLUDES --exclude=clamav*"
-EXCLUDES="$EXCLUDES --exclude=cloudy-*"
-EXCLUDES="$EXCLUDES --exclude=mingw32-*"
-EXCLUDES="$EXCLUDES --exclude=naev*"
-EXCLUDES="$EXCLUDES --exclude=nexuiz*"
-EXCLUDES="$EXCLUDES --exclude=nexwiz*"
-EXCLUDES="$EXCLUDES --exclude=openscada*"
-EXCLUDES="$EXCLUDES --exclude=refmac-*"
-EXCLUDES="$EXCLUDES --exclude=root-doc*"
-EXCLUDES="$EXCLUDES --exclude=vtk*"
-
-# Excessive version changing, unnecessary software
-EXCLUDES="$EXCLUDES --exclude=R-core*"
-EXCLUDES="$EXCLUDES --exclude=octave-*"
+EXCLUDES="--exclude-from=$PWD/rsync-epel.excludes"
 
 cd /var/www/linux/epel || exit 1
 

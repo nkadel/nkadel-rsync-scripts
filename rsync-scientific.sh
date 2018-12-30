@@ -3,8 +3,8 @@
 # rsync-sl.sh - mirror scientific linux for mock use
 # $Id: rsync-scientific.sh,v 1.16 2013/12/31 21:33:01 root Exp root $
 
-#echo "Disabled"
-#exit 1
+echo "Disabled"
+exit 1
 
 # Sort things correctly
 LANG=C

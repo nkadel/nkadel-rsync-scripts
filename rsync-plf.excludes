@@ -1,0 +1,32 @@
+#source
+binary
+debug
+media_info
+repoview
+fullfilelist
+i586
+amd64
+ppc
+x86_64
+noarch
+# Excessive, unnecessary targets
+unity/
+mandrake
+mandriva/community
+# Targets for material hardlinked to main repo
+# or out of date releases
+mandriva/2005
+mandriva/2006.0
+mandriva/2006.1
+mandriva/2007.0
+mandriva/2007.1
+mandriva/2008.0
+mandriva/2008.1
+mandriva/2009.0
+mandriva/2009.1
+mandriva/2010.0
+mandriva/2010.1
+mandriva/2010.2
+mandriva/cfg
+mandriva/free
+mandriva/non-free

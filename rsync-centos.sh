@@ -43,18 +43,10 @@ EXCLUDES="--exclude-from=$PWD/rsync-centos.excludes"
 cd /var/www/linux/centos/ || \
     exit 1
 
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/centos/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/centos/ ./
-
-#case "$RSYNCARGS" in
-#    *--dry-run*)
-#	echo Skipping hardlink with $@
-#	;;
-#    *)
-#	nice /usr/sbin/hardlink -v .
-#	;;
-#esac
+num=0
+while [ $num -lt 30 ]; do
+    rsync $RSYNCARGS \
+	  $EXCLUDES \
+	  rsync://mirrors.kernel.org/centos/ ./ && break
+    num=`expr $num + 1`
+done

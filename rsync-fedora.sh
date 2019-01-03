@@ -38,14 +38,17 @@ EXCLUDES="--exclude-from=$PWD/rsync-fedora.excludes"
 
 cd /var/www/linux/fedora || exit 1
 
-#if [ ! -e releases/30 ]; then
-#    mkdir releases/30
-#    echo Mirroring development/30 to releases/30
-#    /bin/cp -a -l -n development/30/. releases/30/.
-#fi
+# Get latest version from development to live, if latest exists
+if [ ! -e releases/30 ]; then
+    mkdir releases/30
+    echo Mirroring development/30 to releases/30
+    /bin/cp -a -l -n development/30/. releases/30/.
+fi
 
-while true; do
+num=0
+while [ $num -lt 30 ]; do
     rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora/  ./ && break
+	  $EXCLUDES \
+	  rsync://mirrors.kernel.org/fedora/  ./ && break
+    num=`expr $num + 1`
 done

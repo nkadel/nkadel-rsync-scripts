@@ -35,49 +35,17 @@ RSYNCARGS="$RSYNCARGS --timeout=60"
 RSYNCARGS="$RSYNCARGS --no-owner"
 RSYNCARGS="$RSYNCARGS --no-group"
    
-#EXCLUDES="$EXCLUDES --exclude source"
-EXCLUDES="$EXCLUDES --exclude binary"
-EXCLUDES="$EXCLUDES --exclude debug"
-EXCLUDES="$EXCLUDES --exclude media_info"
-EXCLUDES="$EXCLUDES --exclude repoview"
-
-EXCLUDES="$EXCLUDES --exclude=fullfilelist"
-
-EXCLUDES="$EXCLUDES --exclude i586"
-EXCLUDES="$EXCLUDES --exclude amd64"
-EXCLUDES="$EXCLUDES --exclude ppc"
-EXCLUDES="$EXCLUDES --exclude x86_64"
-EXCLUDES="$EXCLUDES --exclude noarch"
-
-# Excessive, unnecessary targets
-EXCLUDES="$EXCLUDES --exclude unity/"
-EXCLUDES="$EXCLUDES --exclude mandrake"
-EXCLUDES="$EXCLUDES --exclude mandriva/community"
-
-# Targets for material hardlinked to main repo
-# or out of date releases
-EXCLUDES="$EXCLUDES --exclude mandriva/2005"
-EXCLUDES="$EXCLUDES --exclude mandriva/2006.0"
-EXCLUDES="$EXCLUDES --exclude mandriva/2006.1"
-EXCLUDES="$EXCLUDES --exclude mandriva/2007.0"
-EXCLUDES="$EXCLUDES --exclude mandriva/2007.1"
-EXCLUDES="$EXCLUDES --exclude mandriva/2008.0"
-EXCLUDES="$EXCLUDES --exclude mandriva/2008.1"
-EXCLUDES="$EXCLUDES --exclude mandriva/2009.0"
-EXCLUDES="$EXCLUDES --exclude mandriva/2009.1"
-EXCLUDES="$EXCLUDES --exclude mandriva/2010.0"
-EXCLUDES="$EXCLUDES --exclude mandriva/2010.1"
-EXCLUDES="$EXCLUDES --exclude mandriva/2010.2"
-
-EXCLUDES="$EXCLUDES --exclude mandriva/cfg"
-EXCLUDES="$EXCLUDES --exclude mandriva/free"
-EXCLUDES="$EXCLUDES --exclude mandriva/non-free"
+EXCLUDES="--exclude-from=$PWD/rsync-plf.excludes"
 
 cd /var/www/linux/plf || exit 1
 
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://distrib-coffee.ipsl.jussieu.fr/pub/linux/plf/ ./
+num=0
+while [ $num -lt 30 ]; do
+    rsync $RSYNCARGS \
+	  $EXCLUDES \
+	  rsync://distrib-coffee.ipsl.jussieu.fr/pub/linux/plf/ ./ && break
+    num=`expr $num + 1`
+done
 
 case "$RSYNCARGS" in
     *--dry-run*)

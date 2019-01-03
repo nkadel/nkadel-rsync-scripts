@@ -35,62 +35,11 @@ EXCLUDES="--exclude-from=$PWD/rsync-epel.excludes"
 
 cd /var/www/linux/epel || exit 1
 
-#rsync $RSYNCARGS \
-#    $EXCLUDES \
-#    rsync://mirrors.kernel.org/fedora-epel/ ./
+num=0
+while [ $num -lt 30 ]; do
+    rsync $RSYNCARGS \
+	  $EXCLUDES \
+	  rsync://mirrors.kernel.org/fedora-epel/ ./ && break
+    num=`expr $num + 1`
+done
 
-#rsync $RSYNCARGS \
-#    $EXCLUDES \
-#    rsync://mirrors.tummy.com/epel/ ./ || \
-
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora-epel/ ./
-
-#case "$RSYNCARGS" in
-#    *--dry-run*)
-#	echo Skipping hardlink with $@
-#	;;
-#    *)
-#	nice /usr/sbin/hardlink -v .
-#	;;
-#esac

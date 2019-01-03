@@ -46,21 +46,19 @@ EXCLUDES="==exclude-from=${PWD}/rsync-scientific.excludes"
 cd /var/www/linux/scientific || \
     exit 1
 
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://rsync.scientificlinux.org/scientific/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://rsync.scientificlinux.org/scientific/ ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://rsync.scientificlinux.org/scientific/ ./
+num=0
+while [ $num -lt 30 ]; do
+    rsync $RSYNCARGS \
+	  $EXCLUDES \
+	  rsync://rsync.scientificlinux.org/scientific/ ./ && break
+    num=`expr $num + 1`
+done
 
-#case "$RSYNCARGS" in
-#    *--dry-run*)
-#	echo Skipping hardlink with $@
-#	;;
-#    *)
-#	nice /usr/sbin/hardlink -v .
-#	;;
-#esac
+case "$RSYNCARGS" in
+    *--dry-run*)
+	echo Skipping hardlink with $@
+	;;
+    *)
+	nice /usr/sbin/hardlink -v .
+	;;
+esac

@@ -114,9 +114,13 @@ cd /var/www/linux/redhat/enterprise/ || exit 1
 #    $EXCLUDES \
 #    rsync://mirrors.kernel.org/redhat/redhat/linux/enterprise/ ./
 
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://rpmfind.net/linux/redhat/linux/enterprise/ ./
+num=0
+while [ $num -lt 30 ]; do
+    rsync $RSYNCARGS \
+	  $EXCLUDES \
+	  rsync://rpmfind.net/linux/redhat/linux/enterprise/ ./ && break
+    num=`expr $num + 1`
+done
 
 case "$RSYNCARGS" in
     *--dry-run*)

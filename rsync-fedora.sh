@@ -19,14 +19,14 @@ RSYNCARGS="$RSYNCARGS -P"
 
 case "$RSYNCARGS" in
     *--delete*)
-	echo Skipping --delete-after selection with $@
+	echo Skipping --delete-after --delete-excluded selection with $@
 	;;
     *)
 	#RSYNCARGS="$RSYNCARGS --delete"
 	RSYNCARGS="$RSYNCARGS --delete-after"
+	RSYNCARGS="$RSYNCARGS --delete-excluded"
 	;;
 esac
-RSYNCARGS="$RSYNCARGS --delete-excluded"
 
 RSYNCARGS="$RSYNCARGS --bwlimit=1000"
 #RSYNCARGS="$RSYNCARGS --dry-run"
@@ -44,21 +44,8 @@ cd /var/www/linux/fedora || exit 1
 #    /bin/cp -a -l -n development/30/. releases/30/.
 #fi
 
-rsync $RSYNCARGS \
+while true; do
+    rsync $RSYNCARGS \
     $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora/  ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora/  ./ || \
-rsync $RSYNCARGS \
-    $EXCLUDES \
-    rsync://mirrors.kernel.org/fedora/  ./
-
-case "$RSYNCARGS" in
-    *--dry-run*)
-	echo Skipping hardlink with $@
-	;;
-    *)
-	nice /usr/sbin/hardlink -v .
-	;;
-esac
+    rsync://mirrors.kernel.org/fedora/  ./ && break
+done

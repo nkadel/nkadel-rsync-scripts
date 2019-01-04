@@ -3,6 +3,9 @@
 # plf-mirros.sh - mirror Penguin Liberation Front contents
 # $Id: rsync-plf.sh,v 1.10 2012/07/01 03:02:29 root Exp root $
 
+# Sort things correctly
+export LANG=C
+
 PROGNAME="$0"
 
 echo "PROGNAME: disabled" >&2

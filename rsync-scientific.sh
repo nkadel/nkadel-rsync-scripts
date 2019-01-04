@@ -7,7 +7,7 @@ echo "Disabled"
 exit 1
 
 # Sort things correctly
-LANG=C
+export LANG=C
 
 PROGNAME="$0"
 

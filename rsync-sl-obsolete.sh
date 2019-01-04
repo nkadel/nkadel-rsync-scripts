@@ -8,7 +8,7 @@ exit 0
 # $Id: rsync-sl-obsolete.sh,v 1.4 2013/12/31 21:35:15 root Exp root $
 
 # Sort things correctly
-LANG=C
+export LANG=C
 
 PROGNAME="$0"
 

@@ -4,7 +4,7 @@
 # $Id: rsync-scientific.sh,v 1.16 2013/12/31 21:33:01 root Exp root $
 
 # Sort things correctly
-LANG=C
+export LANG=C
 
 PROGNAME="$0"
 

@@ -1,7 +1,7 @@
 *.drpm
 0ad**.rpm
-27
-28
+27/*
+28/*
 Fedora*DVD.iso
 Fedora*Live*.iso
 Fedora*disc*.iso
@@ -63,9 +63,9 @@ pxeboot
 quake-*.rpm
 quake2-*.rpm
 quake3-*.rpm
-redeclipse*
+redeclipse*.rpm
 repoview
-root-doc*
+root-doc*.rpm
 scorch3d-*.rpm
 speed-dreams*.rpm
 stellarium*.rpm
@@ -90,4 +90,3 @@ worminator-*.rpm
 wormux-*.rpm
 x86_64
 xonotic-*.rpm
-yofrankie-*.rpm

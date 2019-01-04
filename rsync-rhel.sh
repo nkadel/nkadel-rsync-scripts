@@ -3,6 +3,9 @@
 # rsync-rhelr.sh - mirror Fedora
 # $Id: rsync-rhel.sh,v 1.14 2012/07/01 03:02:29 root Exp root $
 
+# Sort things correctly
+export LANG=C
+
 PROGNAME="$0"
 
 RSYNCARGS="$@"

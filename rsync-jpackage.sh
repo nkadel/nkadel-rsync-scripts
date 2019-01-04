@@ -3,6 +3,9 @@
 # jpackage-mirror.sh - mirror JPackage
 # $Id: rsync-jpackage.sh,v 1.13 2013/08/03 17:50:13 root Exp root $
 
+# Sort things correctly
+export LANG=C
+
 PROGNAME="$0"
 
 echo "$PROGNAME: disabled" >&2

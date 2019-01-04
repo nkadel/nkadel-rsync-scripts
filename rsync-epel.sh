@@ -3,6 +3,9 @@
 # epel-mirror.sh - mirror EPEL for mock use
 # $Id: rsync-epel.sh,v 1.18 2012/08/05 11:20:19 root Exp root $
 
+# Sort things correctly
+export LANG=C
+
 PROGNAME="$0"
 
 RSYNCARGS="$@"

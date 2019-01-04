@@ -3,8 +3,8 @@
 # fedora-mirror.sh - mirror Fedora
 # $Id: rsync-fedora.sh,v 1.20 2013/12/31 21:33:01 root Exp root $
 
-LANG=C
-export LANG
+# Sort things correctly
+export LANG=C
 
 PROGNAME="$0"
 
@@ -39,9 +39,9 @@ EXCLUDES="--exclude-from=$PWD/rsync-fedora.excludes"
 cd /var/www/linux/fedora || exit 1
 
 # Get latest version from development to live, if latest exists
-if [ ! -e releases/30 ]; then
+if [ ! -e releases/30 -a  -e development/30/ ]; then
     mkdir releases/30
-    echo Mirroring development/30 to releases/30
+    echo Mirroring development/30/ to releases/30/
     /bin/cp -a -l -n development/30/. releases/30/.
 fi
 

@@ -5,6 +5,8 @@
 # License: GPL
 # Author: Nico Kadel-Garcia <nkadel@gmail.com>
 
+# Sort things correctly
+export LANG=C
 
 progname=`basename $0`
 

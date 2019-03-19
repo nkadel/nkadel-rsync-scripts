@@ -3,9 +3,6 @@
 # rsync-sl.sh - mirror scientific linux for mock use
 # $Id: rsync-scientific.sh,v 1.16 2013/12/31 21:33:01 root Exp root $
 
-echo "Disabled"
-exit 1
-
 # Sort things correctly
 export LANG=C
 
@@ -37,11 +34,9 @@ RSYNCARGS="$RSYNCARGS --no-owner"
 RSYNCARGS="$RSYNCARGS --no-group"
 #RSYNCARGS="$RSYNCARGS --bwlimit=20"
 #RSYNCARGS="$RSYNCARGS --timeout=60"
-RSYNCARGS="$RSYNCARGS --no-owner"
-RSYNCARGS="$RSYNCARGS --no-group"
 #RSYNCARGS="$RSYNCARGS --dry-run"
 
-EXCLUDES="==exclude-from=${PWD}/rsync-scientific.excludes"
+EXCLUDES="--exclude-from=${PWD}/rsync-scientific.excludes"
 
 cd /var/www/linux/scientific || \
     exit 1

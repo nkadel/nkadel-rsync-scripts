@@ -39,6 +39,7 @@ fullfilelist
 gimp-help-*
 google-noto-cjk-fonts-*.rpm
 hedgewars-*.rpm
+hunspell-*.rpm
 i386
 icecat-*.rpm
 kde*wallpaper*.rpm
@@ -50,7 +51,6 @@ koffice-langpack-*.rpm
 lilypond-*.rpm
 maxima-*.rpm
 megaglest*.rpm
-mingw32-*.rpm
 mrpt*.rpm
 naev-*.rpm
 nexuiz*.rpm
@@ -65,7 +65,6 @@ quake2-*.rpm
 quake3-*.rpm
 redeclipse*.rpm
 repoview
-root-doc*.rpm
 scorch3d-*.rpm
 speed-dreams*.rpm
 stellarium*.rpm
@@ -73,9 +72,7 @@ supertux*.rpm
 tesseract-langpack-*rpm
 test
 testing
-texlive-texmf-doc-*.rpm
 torcs-*.rpm
-tremulous-*.rpm
 updates
 vdrift*.rpm
 vegastrike-*.rpm

@@ -2,7 +2,7 @@ repoview
 #source
 fullfilelist
 SRPMS
-debuginfo
+debuginfo/*
 testing
 errata
 build

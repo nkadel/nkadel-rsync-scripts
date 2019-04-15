@@ -41,8 +41,8 @@ cd /var/www/linux/fedora-development/development || exit 1
 # Get latest version from development to live, if latest exists
 if [ ! -e /var/www/linux/fedora/releases/30 -a -d 30/ ]; then
     mkdir /var/www/linux/fedora/releases/30
-    echo Mirroring 30/ to /var/www/linux/fedora/releases/30/
-    /bin/cp -a -l -n 30/. /var/www/linux/fedora/releases/30/.
+#    echo Mirroring 30/ to /var/www/linux/fedora/releases/30/
+#    /bin/cp -a -l -n 30/. /var/www/linux/fedora/releases/30/.
 fi
 
 num=0

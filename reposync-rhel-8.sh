@@ -1,6 +1,7 @@
 #!/bin/sh
 #
-# reposync-rhel.sh - reposync RHEL rpms or SRPM's, requires yum setup
+# reposync-rhel-6.sh - reposync RHEL rpms or SRPM's
+#    Requires registration of RHEL channels
 #
 # License: GPL
 # Author: Nico Kadel-Garcia <nkadel@gmail.com>

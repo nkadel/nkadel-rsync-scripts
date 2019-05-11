@@ -7,6 +7,9 @@
 # Author: Nico Kadel-Garcia <nkadel@gmail.com>
 
 # Note that only enabled RHEL repos are mirrored
+# To find the list of available subscriptions
+#	subscription-manager list --available
+
 # To find the list of available repos:
 #	subscription-manager repos --list
 #
@@ -37,10 +40,6 @@ RSYNCARGS="$@"
 REPODIR=/var/www/linux/reposync/rhel/8/
 cd $REPODIR || exit 1
 
-LOGFILE=/var/log/reposync/${progname}.log
-rm -f $LOGFILE && \
-    cat /dev/null >$LOGFILE || exit 1
-
 # Exit on failures to pipes
 set -o pipefail
 
@@ -55,9 +54,32 @@ REPOSYNCARGS="$REPOSYNCARGS --delete"
 
 # Deduce subscribed repos. Repos are not even listed if not *subscribed*!!!
 # "dnf repolist" contans undesired headers
-REPOS="`subscription-manager repos --list | grep 'Repo ID:' | grep 'rhel-8' | awk '{print $NF}' | grep -v satellite | LANG=C sort`"
+REPOS="`subscription-manager repos --list | grep 'Repo ID:' | awk '{print $NF}' | LANG=C sort`"
+
+# Warning: Various repos are not accessible with a normal license, nor suitable
+# for typical RHEL mirror
 
 for repo in $REPOS; do
+    case $repo in
+	satellite-*)
+	    echo "Warning: skipping $repo"
+	    continue
+	    ;;
+	*-7-*)
+	    echo "Warning: skipping $repo"
+	    continue
+	    ;;
+	ansible-*)
+	    echo "Warning: skipping $repo"
+	    continue
+	    ;;
+	*-rhel-8-*)
+	    ;;
+	*)
+	    echo "Warning: skipping confusing repo $repo"
+	    continue
+	    ;;
+    esac
     echo
     echo "$progname: mirroring $REPODIR/$repo"
     echo "$progname: logging in $repo.log"
@@ -88,4 +110,4 @@ for repo in $REPOS; do
 done
 
 echo Hardlinking based on content only in $REPODIR
-hardlink -v -c $REPODIR
+nice hardlink -v -c $REPODIR

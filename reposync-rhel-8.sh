@@ -39,41 +39,23 @@ REPOS="`dnf -q repolist --disablerepo=* --enablerepo=rhel-8-* 2>/dev/null | grep
 cd $REPODIR || exit 1
 for repo in $REPOS; do
     echo
-    echo "$progname: mirroring $repo to $REPODIR/$repo"
+    echo "$progname: mirroring $REPODIR/$repo"
     nice reposync \
         $REPOSYNCARGS \
 	--repoid=$repo 2>&1 | tee $LOGFILE
 done
-
-#for repo in $REPOS; do
-#    echo "Clearing out-of-date RPMs from: $REPODIR"
-#    find $REPODIR/$repo/ -name \*.rpm | sort -u | while read name; do
-#	#echo Checking $name
-#	rpmname=`basename $name`
-#	grep -q "\[SKIPPED\] $rpmname: Already downloaded" $LOGFILE && continue
-#
-#	echo "Flushing unsynced $name"
-#	echo rm -f $name && continue
-#    done
-#    echo "Warning: reposync logged to $LOGFILE unsuccessful"
-#    echo "    Not scrubbing mismaatched RPMs"
-#done
 
 # Run createrepo even if reposync fails: risk of partial
 # update causing confusion has to be traded off against having
 # partially successful updates not available at all.
 #
 # Do not check against timestamps of downloaded packages, those mirror
-# upstream timestamps, not local download times
+# download times
 #
 # Use --update, it's vastly more efficient for large repositories
 
 for repo in $REPOS; do
-    createrepo $REPODIR/$repo || exit 1
+    echo Creating repodata in $REPODIR/$repo
+    nice createrepo --update $REPODIR/$repo
 done
 
-#nice createrepo --update $REPODIR
-
-## Define other directories to hardlink up
-#LINKDIRS=''
-#nice /usr/sbin/hardlink -v $LINKDIRS $REPODIR

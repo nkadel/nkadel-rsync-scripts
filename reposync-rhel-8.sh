@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # reposync-rhel-6.sh - reposync RHEL rpms or SRPM's
 #    Requires registration of RHEL channels
@@ -34,6 +34,7 @@ export LANG=C
 progname=`basename $0`
 
 set -e
+set -o pipefail
 
 RSYNCARGS="$@"
 
@@ -48,6 +49,7 @@ REPOSYNCARGS=""
 # Clean up after old package failures
 REPOSYNCARGS="$REPOSYNCARGS --delete"
 
+# Set repos manually
 #REPOS=""
 #REPOS="$REPOS rhel-8-for-x86_64-baseos-rpms"
 #REPOS="$REPOS rhel-8-for-x86_64-appstream-rpms"
@@ -56,33 +58,14 @@ REPOSYNCARGS="$REPOSYNCARGS --delete"
 # "dnf repolist" contans undesired headers
 REPOS="`subscription-manager repos --list | grep 'Repo ID:' | awk '{print $NF}' | LANG=C sort`"
 
-# Warning: Various repos are not accessible with a normal license, nor suitable
-# for typical RHEL mirror
+# Filter out channels that are empty, or broken, on RHEL 8 subscriptions
+echo "Filtering REPOS for undesirable ansible, satellite, and -7- channels"
+REPOS="`echo "$REPOS" | sed /satellite-/d | sed /-7-/d | sed /ansible-/d |  grep rhel-8`"
 
 for repo in $REPOS; do
-    case $repo in
-	satellite-*)
-	    echo "Warning: skipping $repo"
-	    continue
-	    ;;
-	*-7-*)
-	    echo "Warning: skipping $repo"
-	    continue
-	    ;;
-	ansible-*)
-	    echo "Warning: skipping $repo"
-	    continue
-	    ;;
-	*-rhel-8-*)
-	    ;;
-	*)
-	    echo "Warning: skipping confusing repo $repo"
-	    continue
-	    ;;
-    esac
     echo
     echo "$progname: mirroring $REPODIR/$repo"
-    echo "$progname: logging in $repo.log"
+    echo "$progname: logging in $REPODIR/$repo.log"
     nice reposync \
         $REPOSYNCARGS \
 	--repoid=$repo 2>&1 2>&1 | tee $repo.log
@@ -105,8 +88,10 @@ for repo in $REPOS; do
 	echo Warning: $repo/.repodata found, skipping createrepo
 	continue
     fi
-    echo Creating repodata in: $repo
-    nice createrepo --update $repo
+    echo
+    echo
+    echo Creating repodata in: $REPODIR/$repo
+    nice createrepo --update --quiet $REPODIR/$repo
 done
 
 echo Hardlinking based on content only in $REPODIR

@@ -59,8 +59,8 @@ REPOSYNCARGS="$REPOSYNCARGS --delete"
 REPOS="`subscription-manager repos --list | grep 'Repo ID:' | awk '{print $NF}' | LANG=C sort`"
 
 # Filter out channels that are empty, or broken, on RHEL 8 subscriptions
-echo "Filtering REPOS for undesirable ansible, satellite, and -7- channels"
-REPOS="`echo "$REPOS" | sed /satellite-/d | sed /-7-/d | sed /ansible-/d |  grep rhel-8`"
+echo "Filtering REPOS for undesirable, satellite, and -7- channels"
+REPOS="`echo "$REPOS" | sed /satellite-/d | sed /-7-/d | grep rhel-8`"
 
 for repo in $REPOS; do
     echo

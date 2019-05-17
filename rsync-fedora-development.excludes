@@ -1,6 +1,3 @@
-#30/Everything/*
-#30/Modular/*
-#30/Server/*
 #hunspell-*.rpm
 #rawhide/Everything/x86_64/*
 #rawhide/Modular/x86_64/*
@@ -13,13 +10,7 @@
 *.vagrant-*.box
 *.vmdk
 0ad**.rpm
-30/AtomicHost/*
-30/AtomicWorkstation/*
-30/Cloud/*
-30/Container/*
-30/Silverblue/*
-30/Spins/*
-30/Workstation/*
+30
 Fedora-*.iso
 FlightGear*.rpm
 LiveOS/*
@@ -57,7 +48,7 @@ freedroidrpg-*.rpm
 frozen-bubble-*.rpm
 fullfilelist
 gimp-help-*
-google-noto-cjk-fonts-*.rpm
+#google-noto-cjk-fonts-*.rpm
 hedgewars-*.rpm
 i386/*
 icecat-*.rpm
@@ -83,9 +74,7 @@ ppc/*
 ppc64/*
 pxeboot/*
 qt5-qt3d-*.rpm
-quake-*.rpm
-quake2-*.rpm
-quake3-*.rpm
+quake*.rpm
 quantam-espresso-*.rpm
 rawhide/AtomicHost/x86_64/*
 rawhide/AtomicWorkstation/x86_64/*

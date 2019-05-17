@@ -18,15 +18,15 @@ RSYNCARGS="$RSYNCARGS --no-motd"
 RSYNCARGS="$RSYNCARGS -P"
 
 case "$RSYNCARGS" in
-    *--delete*)
-	echo Skipping --delete-after --delete-excluded selection with $@
+    *--delete*|*--exclude*)
+	echo Skipping --delete-excluded selection with $@
 	;;
     *)
 	#RSYNCARGS="$RSYNCARGS --delete"
-	RSYNCARGS="$RSYNCARGS --delete-after"
 	RSYNCARGS="$RSYNCARGS --delete-excluded"
 	;;
 esac
+RSYNCARGS="$RSYNCARGS --delete-after"
 
 RSYNCARGS="$RSYNCARGS --bwlimit=1000"
 #RSYNCARGS="$RSYNCARGS --dry-run"

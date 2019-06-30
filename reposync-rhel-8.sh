@@ -45,9 +45,12 @@ cd $REPODIR || exit 1
 set -o pipefail
 
 REPOSYNCARGS=""
+# Download only newest version
 #REPOSYNCARGS="$REPOSYNCARGS --newest"
 # Clean up after old package failures
 REPOSYNCARGS="$REPOSYNCARGS --delete"
+# Download metadata
+REPOSYNCARGS="$REPOSYNCARGS --download-metadata"
 
 # Set repos manually
 #REPOS=""
@@ -60,7 +63,8 @@ REPOS="`subscription-manager repos --list | grep 'Repo ID:' | awk '{print $NF}' 
 
 # Filter out channels that are empty, or broken, on RHEL 8 subscriptions
 echo "Filtering REPOS for undesirable, satellite, and -7- channels"
-REPOS="`echo "$REPOS" | sed /satellite-/d | sed /-7-/d | grep rhel-8`"
+#REPOS="`echo "$REPOS" | sed /^satellite-/d | sed /-7-/d | sed /^ansible/d | grep rhel-8`"
+REPOS="`echo "$REPOS" | sed /^satellite-/d | sed /-sap-/d | sed /-7-/d | sed /-netweaver-/d | grep rhel-8`"
 
 for repo in $REPOS; do
     echo
@@ -71,28 +75,6 @@ for repo in $REPOS; do
 	--repoid=$repo 2>&1 2>&1 | tee $repo.log
 done
 
-# Run createrepo even if reposync fails: risk of partial
-# update causing confusion has to be traded off against having
-# partially successful updates not available at all.
-#
-# Do not check against timestamps of downloaded packages, those mirror
-# download times
-#
-# Use --update, it's vastly more efficient for large repositories
-
-for repo in $REPOS; do
-    if [ ! -d $repo ]; then
-	echo Warning: $repo missing, skipping createrepo
-	continue
-    elif [ -d $repo/.repodata ]; then
-	echo Warning: $repo/.repodata found, skipping createrepo
-	continue
-    fi
-    echo
-    echo
-    echo Creating repodata in: $REPODIR/$repo
-    nice createrepo --update --quiet $REPODIR/$repo
-done
-
+# Particularly useful for duplicate packages in storage and resilience channels
 echo Hardlinking based on content only in $REPODIR
 nice hardlink -v -c $REPODIR

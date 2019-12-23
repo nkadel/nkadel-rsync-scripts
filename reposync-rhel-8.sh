@@ -92,7 +92,7 @@ for repo in $REPOS; do
 	echo "    Run $num failed, retrying"
     done
     rm -rf $repo/.repodata
-    nice createrepo $repo | tee -a /var/log/reposync/$repo.log
+    nice createrepo --update $repo | tee -a /var/log/reposync/$repo.log
 done
 
 # Particularly useful for duplicate packages in storage and resilience channels

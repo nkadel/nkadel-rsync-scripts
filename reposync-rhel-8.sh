@@ -64,21 +64,49 @@ REPOS="`subscription-manager repos --list | grep 'Repo ID:' | awk '{print $NF}' 
 
 # Filter out channels that are empty, or broken, on RHEL 8 subscriptions
 echo "Filtering REPOS for undesirable, satellite, and -7- channels"
-#REPOS="`echo "$REPOS" | sed /^satellite-/d | sed /-7-/d | sed /^ansible/d | grep rhel-8`"
-REPOS="`echo "$REPOS" | sed /-sap-/d | sed /-7-/d | sed /^satellite-/d | sed /-debug-/d | grep rhel-8 | sed /-eus-/d | sed /rh-gluster-3/d`"
+#REPOS="`echo "$REPOS" | grep rhel-8`"
 
-
-REPOS="`echo "$REPOS" | sed /-7-/d`"
-REPOS="`echo "$REPOS" | sed /-debug-/d`"
-REPOS="`echo "$REPOS" | sed /-eus-/d`"
-REPOS="`echo "$REPOS" | sed /-sap-/d`"
-REPOS="`echo "$REPOS" | sed /^satellite-/d`"
-REPOS="`echo "$REPOS" | sed /rh-gluster-3/d`"
-REPOS="`echo "$REPOS" | sed /ansible-2.8-/d`"
-REPOS="`echo "$REPOS" | sed /ansible-2-/d`"
 
 set -o pipefail
 for repo in $REPOS; do
+    case $repo in
+	*-7-*)
+	    echo Skipping: $repo
+	    continue
+	    ;;
+	*-debug-*)
+	    echo Skipping: $repo
+	    continue
+	    ;;
+	*-e4s-*)
+	    echo Skipping: $repo
+	    continue
+	    ;;
+	*-eus-*)
+	    echo Skipping: $repo
+	    continue
+	    ;;
+	*-sap-*)
+	    echo Skipping: $reepo
+	    continue
+	    ;;
+	satellite-*)
+	    echo Skipping: $reepo
+	    continue
+	    ;;
+	*ansib-2-*)
+	    echo Skipping: $reepo
+	    continue
+	    ;;
+	ansible-2.8-*)
+	    echo Skipping: $reepo
+	    continue
+	    ;;
+	rh-gluster-3*)
+	    echo Skipping: $reepo
+	    continue
+	    ;;
+    esac	
     echo
     rm -f /var/log/reposync/$repo.log
     num=0

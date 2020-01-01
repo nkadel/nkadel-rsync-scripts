@@ -22,6 +22,7 @@
 26/*
 27/*
 28/*
+29/*
 Fedora-*-Live-*.iso
 Fedora-Server-*.iso
 Fedora-Workstation-*.iso
@@ -70,6 +71,7 @@ kicad-*
 kicad-doc-*.rpm
 koffice-langpack-*.rpm
 lilypond-*.rpm
+macboot.img
 maxima-*.rpm
 megaglest*.rpm
 mrpt*.rpm
@@ -115,4 +117,3 @@ wine-*.rpm
 worminator-*.rpm
 wormux-*.rpm
 xonotic-*.rpm
-29/*

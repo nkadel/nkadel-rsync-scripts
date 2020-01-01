@@ -1,3 +1,5 @@
+aarch64/*
+aarch/*
 #*-langpack-[a-d]*rpm
 #*-langpack-[f-z]*rpm
 #*-langpack-e[a-mo-z]*rpm
@@ -34,3 +36,5 @@ rt/*
 virt/*
 xen/*
 xen4/*
+7.6.1810/*
+ppc64le/*

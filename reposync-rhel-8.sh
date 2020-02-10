@@ -108,7 +108,9 @@ for repo in $REPOS; do
 	    ;;
     esac	
     echo
-    rm -f /var/log/reposync/$repo.log
+    if [ -e /var/log/reposync/$repo.log ]; then
+	mv -f /var/log/reposync/$repo.log /var/log/reposync/$repo.log.1
+    fi
     num=0
     while [ $num -lt 10 ]; do
 	echo "$progname: mirroring $REPODIR/$repo"

@@ -1,0 +1,23 @@
+#[copr:copr.fedorainfracloud.org:mrmeee:ansible-awx]
+[mrmeee-ansible-awx]
+name=Copr repo for ansible-awx owned by mrmeee
+baseurl=https://download.copr.fedorainfracloud.org/results/mrmeee/ansible-awx/epel-7-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/mrmeee/ansible-awx/pubkey.gpg
+repo_gpgcheck=0
+enabled=0
+enabled_metadata=1
+
+
+[mrmeee-ansible-awx-source]
+name=Copr repo for ansible-awx owned by mrmeee
+baseurl=https://download.copr.fedorainfracloud.org/results/mrmeee/ansible-awx/srpm-builds/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/mrmeee/ansible-awx/pubkey.gpg
+repo_gpgcheck=0
+enabled=0
+enabled_metadata=1

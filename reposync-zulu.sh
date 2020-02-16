@@ -61,7 +61,7 @@ for repo in $REPOS; do
     echo "$progname: logging in $REPODIR/$repo.log"
     nice reposync \
         $REPOSYNCARGS \
-	--repoid=$repo 2>&1 2>&1 | tee $repo.log
+	--repoid=$repo 2>&1 | tee $repo.log
 done
 
 # Run createrepo even if reposync fails: risk of partial

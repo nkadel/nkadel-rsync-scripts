@@ -117,7 +117,7 @@ for repo in $REPOS; do
 	echo "$progname: logging in /var/log/reposync/$repo.log"
 	nice reposync \
              $REPOSYNCARGS \
-	     --repoid=$repo 2>&1 2>&1 | tee /var/log/reposync/$repo.log && break
+	     --repoid=$repo 2>&1 | tee /var/log/reposync/$repo.log && break
 	num=`expr $num + 1`
 	echo "    Run $num failed, retrying"
     done

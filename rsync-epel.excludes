@@ -19,7 +19,7 @@ fullfilelist
 i386/*
 ia64/*
 isos/*
-mingw32-*.rpm
+#mingw32-*.rpm
 naev*.rpm
 nexuiz-*.rpm
 nexwiz*.rpm
@@ -35,5 +35,6 @@ root-doc-*.rpm
 s390/*
 s390x/*
 #testing/*
-vtk*
+ovtk*
 testing/*
+Cl

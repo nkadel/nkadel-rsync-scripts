@@ -1,5 +1,6 @@
 #Fedora-*.iso
 #Modular/
+#SRPMS/*
 #astromenace-*.rpm
 #astrometry-*.rpm
 #beneath-a-steel-sky-*.rpm
@@ -19,16 +20,14 @@
 *.vagrant-*.box
 *.vmdk
 0ad**.rpm
-26/*
-27/*
 28/*
 29/*
+30
 Fedora-*-Live-*.iso
 Fedora-Server-*.iso
 Fedora-Workstation-*.iso
 FlightGear*.rpm
 LiveOS/*
-SRPMS/*
 Saaghar-*
 Silverblue/*
 Spins/*
@@ -85,9 +84,7 @@ ppc/*
 ppc64/*
 qt5-qt3d-*.rpm
 quake-*.rpm
-quake2-*.rpm
-quake3-*.rpm
-quantam-espresso-*.rpm
+#quantam-espresso-*.rpm
 redeclipse*.rpm
 releases/29/Cloud/*
 releases/29/Container/*
@@ -117,3 +114,4 @@ wine-*.rpm
 worminator-*.rpm
 wormux-*.rpm
 xonotic-*.rpm
+31

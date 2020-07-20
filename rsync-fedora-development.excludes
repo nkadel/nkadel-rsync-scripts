@@ -101,7 +101,7 @@ torcs-*.rpm
 twitter-*rpm
 vdrift*.rpm
 vegastrike-*.rpm
-virtualplanet-data-*.rpm
+virtualplanet-*.rpm
 warmux-*.rpm
 warsow-*.rpm
 warzone*.rpm
@@ -112,3 +112,4 @@ wine-*.rpm
 worminator-*.rpm
 wormux-*.rpm
 xonotic-*.rpm
+32/*

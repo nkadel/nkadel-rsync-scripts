@@ -36,14 +36,14 @@ RSYNCARGS="$RSYNCARGS --no-group"
 
 EXCLUDES="--exclude-from=$PWD/rsync-fedora-development.excludes"
 
-cd /var/www/linux/fedora-development/development || exit 1
+cd /var/www/linux/fedora-development/development/ || exit 1
 
-# Get latest version from development to live, if latest exists
-if [ ! -e /var/www/linux/fedora/releases/32 -a -d 32/ ]; then
-    mkdir /var/www/linux/fedora/releases/32
-    echo Mirroring 30/ to /var/www/linux/fedora/releases/30/
-    /bin/cp -a -l -n 30/. /var/www/linux/fedora/releases/30/.
-fi
+## Get latest version from development to live, if latest exists
+#if [ ! -e /var/www/linux/fedora/releases/32 -a -d 32/ ]; then
+#    mkdir /var/www/linux/fedora/releases/32
+#    echo Mirroring 32/ to /var/www/linux/fedora/releases/32/
+#    /bin/cp -a -l -n 32/. /var/www/linux/fedora/releases/32/.
+#fi
 
 num=0
 while [ $num -lt 30 ]; do
@@ -52,10 +52,3 @@ while [ $num -lt 30 ]; do
 	  rsync://mirrors.kernel.org/fedora/development/  ./ && break
     num=`expr $num + 1`
 done
-
-#if [ ! -e 31 -a -d 32 ]; then
-#    echo copying 32 to 31
-#    cp -al 32 31
-#fi
-
-

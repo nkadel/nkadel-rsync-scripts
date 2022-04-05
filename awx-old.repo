@@ -1,0 +1,6 @@
+[awx-old]
+name=AWX repo - Source
+baseurl=http://rpm.miracle.dk/AWX-RPM-OLD/CentOS_8/
+enabled=0
+gpgcheck=0
+metadata_expire=1

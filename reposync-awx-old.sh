@@ -15,7 +15,7 @@ progname=`basename $0`
 
 RSYNCARGS="$@"
 
-REPODIR=/var/www/linux/reposync/awx-old
+REPODIR=/var/www/linux/reposync/
 
 LOGFILE=/var/log/reposync/${progname}.log
 rm -f $LOGFILE && \

@@ -35,7 +35,7 @@ for repo in $REPOS; do
 	 --delete \
 	 --repoid=$repo \
 	 --source \
-	 --download_path=$REPODIR 2>&1 | tee $LOGFILE
+	 --download-path=$REPODIR 2>&1 | tee $LOGFILE
 
     # Use --update, it's vastly more efficient for large repositories
     nice createrepo --update $REPODIR/$repo

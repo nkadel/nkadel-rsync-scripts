@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# reposync-rhel-8.sh - reposync RHEL rpms or SRPM's
+# reposync-rhel-9.sh - reposync RHEL rpms or SRPM's
 #    Requires registration of RHEL channels
 #
 # License: GPL
@@ -23,10 +23,10 @@
 #
 
 # Review and activate repos, as desired, based on "Repo ID", i.e.
-#    subscription-manager repos --enable=codeready-builder-for-rhel-8-x86_64-debug-rpms
+#    subscription-manager repos --enable=codeready-builder-for-rhel-9-x86_64-debug-rpms
 #
 # Wild cards also accepted:
-#    subscription-manager repos --enable=*-rhel-8-*
+#    subscription-manager repos --enable=*-rhel-9-*
 
 # Sort things correctly
 export LANG=C
@@ -54,18 +54,17 @@ REPOSYNCARGS="$REPOSYNCARGS --delete"
 
 # Set repos manually
 #REPOS=""
-#REPOS="$REPOS rhel-8-for-x86_64-baseos-rpms"
-#REPOS="$REPOS rhel-8-for-x86_64-appstream-rpms"
+#REPOS="$REPOS rhel-9-for-x86_64-baseos-rpms"
+#REPOS="$REPOS rhel-9-for-x86_64-appstream-rpms"
 
 # Deduce subscribed repos. Repos are not even listed if not *subscribed*!!!
 # "dnf repolist" contans undesired headers
 REPOS="`subscription-manager repos --list | grep 'Repo ID:' | awk '{print $NF}' | LANG=C sort -r`"
 
 
-# Filter out channels that are empty, or broken, on RHEL 8 subscriptions
-echo "Filtering REPOS for undesirable, satellite, and -7- channels"
-#REPOS="`echo "$REPOS" | grep rhel-8`"
-
+# Filter out channels that are empty, or broken, on RHEL 9 subscriptions
+#echo "Filtering REPOS for undesirable, satellite, and -7- channels"
+#REPOS="`echo "$REPOS" | grep rhel-9`"
 
 set -o pipefail
 for repo in $REPOS; do
@@ -74,7 +73,7 @@ for repo in $REPOS; do
 	    echo Skipping: $repo
 	    continue
 	    ;;
-	*-9-*)
+	*-8-*)
 	    echo Skipping: $repo
 	    continue
 	    ;;

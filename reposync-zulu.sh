@@ -82,7 +82,6 @@ for repo in $REPOS; do
 	continue
     fi
     echo
-    echo
     echo Creating repodata in: $REPODIR/$repo
     nice createrepo --quiet $REPODIR/$repo
 done

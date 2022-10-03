@@ -1,10 +1,6 @@
-aarch64/*
-aarch/*
 #*-langpack-[a-d]*rpm
 #*-langpack-[f-z]*rpm
 #*-langpack-e[a-mo-z]*rpm
-#6.*/*/*
-#6/*/*
 #drpms/*
 #source/*
 #x86_64
@@ -16,9 +12,13 @@ aarch/*
 *Minimal*.iso
 *bin*.iso
 *minimal*.iso
+6.*/*/*
+8.*/*/*
 HEADER.html
 LiveOS/*
 SRPMS/*
+aarch/*
+aarch64/*
 atomic/*
 cloud/*
 dotnet/*
@@ -31,10 +31,9 @@ isos/*
 livecd/*
 obsolete/*
 paas/*
+ppc64le/*
 repoview/*
 rt/*
 virt/*
 xen/*
 xen4/*
-7.6.1810/*
-ppc64le/*

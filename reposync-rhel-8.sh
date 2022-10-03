@@ -61,11 +61,9 @@ REPOSYNCARGS="$REPOSYNCARGS --delete"
 # "dnf repolist" contans undesired headers
 REPOS="`subscription-manager repos --list | grep 'Repo ID:' | awk '{print $NF}' | LANG=C sort -r`"
 
-
 # Filter out channels that are empty, or broken, on RHEL 8 subscriptions
 echo "Filtering REPOS for undesirable, satellite, and -7- channels"
 #REPOS="`echo "$REPOS" | grep rhel-8`"
-
 
 set -o pipefail
 for repo in $REPOS; do

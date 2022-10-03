@@ -77,7 +77,6 @@ EXCLUDES="$EXCLUDES --exclude=SAM"
 EXCLUDES="$EXCLUDES --exclude=SJIS"
 EXCLUDES="$EXCLUDES --exclude=SSA"
 
-
 #EXCLUDES="$EXCLUDES --exclude=drpms"
 EXCLUDES="$EXCLUDES --exclude=iso"
 #EXCLUDES="$EXCLUDES --exclude=jigdo"

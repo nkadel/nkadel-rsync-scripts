@@ -20,9 +20,6 @@
 *.vagrant-*.box
 *.vmdk
 0ad**.rpm
-28/*
-29/*
-30
 Fedora-*-Live-*.iso
 Fedora-Server-*.iso
 Fedora-Workstation-*.iso

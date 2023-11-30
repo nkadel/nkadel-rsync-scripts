@@ -38,7 +38,7 @@ set -o pipefail
 
 RSYNCARGS="$@"
 
-REPODIR=/var/www/linux/reposync/rhel/8/
+REPODIR=/var/www/linux/reposync/rhel/9/
 cd $REPODIR || exit 1
 
 # Exit on failures to pipes
@@ -62,7 +62,7 @@ REPOSYNCARGS="$REPOSYNCARGS --delete"
 REPOS="`subscription-manager repos --list | grep 'Repo ID:' | awk '{print $NF}' | LANG=C sort -r`"
 
 # Filter out channels that are empty, or broken, on RHEL 9 subscriptions
-#echo "Filtering REPOS for undesirable, satellite, and -7- channels"
+echo "Filtering REPOS for undesirable, satellite, and -7- channels"
 #REPOS="`echo "$REPOS" | grep rhel-9`"
 
 set -o pipefail
@@ -72,7 +72,7 @@ for repo in $REPOS; do
 	    echo Skipping: $repo
 	    continue
 	    ;;
-	*-8-*)
+	*-9-*)
 	    echo Skipping: $repo
 	    continue
 	    ;;

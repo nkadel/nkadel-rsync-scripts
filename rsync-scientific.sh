@@ -8,6 +8,9 @@ export LANG=C
 
 PROGNAME="$0"
 
+echo "PROGNAME: disabled" >&2
+exit 1
+
 RSYNCARGS="$@"
 
 RSYNCARGS="$RSYNCARGS -aH"

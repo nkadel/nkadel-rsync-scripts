@@ -89,19 +89,19 @@ for repo in $REPOS; do
 	    continue
 	    ;;
 	*-sap-*)
-	    echo Skipping: $reepo
+	    echo Skipping: $repo
 	    continue
 	    ;;
 	satellite-*)
-	    echo Skipping: $reepo
+	    echo Skipping: $repo
 	    continue
 	    ;;
 	*ansible*)
-	    echo Skipping: $reepo
+	    echo Skipping: $repo
 	    continue
 	    ;;
 	rh-gluster-3*)
-	    echo Skipping: $reepo
+	    echo Skipping: $repo
 	    continue
 	    ;;
     esac	
